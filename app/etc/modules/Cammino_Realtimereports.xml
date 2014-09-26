@@ -2,7 +2,7 @@
 	<modules>
 		<Cammino_Realtimereports>
 			<active>true</active>
-			<codePool>local</codePool>
+			<codePool>community</codePool>
 		</Cammino_Realtimereports>
 	</modules>
 </config>
