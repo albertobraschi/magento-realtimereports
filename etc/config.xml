@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config>
+
+    <modules>
+        <Cammino_Realtimereports>
+            <version>0.1.0</version>
+        </Cammino_Realtimereports>
+    </modules>
+
+    <global>
+        <blocks>
+            <realtimereports>
+                <class>Cammino_Realtimereports_Block</class>
+            </realtimereports>
+        </blocks>
+        <models>
+            <realtimereports>
+                <class>Cammino_Realtimereports_Model</class>
+                <resourceModel>realtimereports_mysql4</resourceModel>
+            </realtimereports>
+            <realtimereports_mysql4>
+                <class>Cammino_Realtimereports_Model_Mysql4</class>
+            </realtimereports_mysql4>
+        </models>
+    </global>
+
+    <admin>
+        <routers>
+            <realtimereports>
+                <use>admin</use>
+                <args>
+                    <module>Cammino_Realtimereports</module>
+                    <frontName>realtimereports</frontName>
+                </args>
+            </realtimereports>
+        </routers>
+    </admin>
+
+    <adminhtml>
+
+        <translate>
+            <modules>
+                <Cammino_Realtimereports>
+                    <files>
+                        <default>Cammino_Realtimereports.csv</default>
+                    </files>
+                </Cammino_Realtimereports>
+            </modules>
+        </translate>
+
+        <menu>
+            <report>
+                <children>
+                    <realtimereports>
+                        <title>Real Time Reports</title>
+                        <sort_order>99999</sort_order>               
+                        <children>
+                            <sales translate="title">
+                                <title>Sales Report</title>
+                                <action>realtimereports/sales/sales</action>
+                            </sales>
+                            <region translate="title">
+                                <title>Sales by Region</title>
+                                <action>realtimereports/region/sales</action>
+                            </region>
+                            <bestsellers translate="title">
+                                <title>Bestsellers</title>
+                                <action>realtimereports/bestsellers/sales</action>
+                            </bestsellers>
+                            <customers translate="title">
+                                <title>Customers</title>
+                                <action>realtimereports/customers/sales</action>
+                            </customers>
+                        </children>
+                    </realtimereports>
+                </children>
+            </report>
+        </menu>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <report>
+                            <children>
+                                <realtimereports>
+                                    <title>Real Time Reports</title>
+                                        <children>
+                                            <sales translate="title">
+                                                <title>Sales Report</title>
+                                            </sales>
+                                            <region translate="title">
+                                                <title>Sales by Region</title>
+                                            </region>
+                                            <bestsellers translate="title">
+                                                <title>Bestsellers</title>
+                                            </bestsellers>
+                                            <customers translate="title">
+                                                <title>Customers</title>
+                                            </customers>
+                                        </children>
+                                </realtimereports>
+                            </children>
+                        </report>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+        <layout>
+            <updates>
+                <realtimereports>
+                    <file>realtimereports.xml</file>
+                </realtimereports>
+            </updates>
+        </layout>
+
+    </adminhtml>
+
+</config>

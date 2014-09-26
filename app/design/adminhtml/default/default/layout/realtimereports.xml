@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <realtimereports_sales_sales>
+        <update handle="report_sales"/>
+        <reference name="content">
+            <block type="realtimereports/sales" template="report/grid/container.phtml" name="sales.report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="realtimereports/sales_form" name="grid.filter.form">
+                </block>
+            </block>
+        </reference>
+    </realtimereports_sales_sales>
+
+    <realtimereports_region_sales>
+        <update handle="report_sales"/>
+        <reference name="content">
+            <block type="realtimereports/region" template="report/grid/container.phtml" name="sales.report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="realtimereports/region_form" name="grid.filter.form">
+                </block>
+            </block>
+        </reference>
+    </realtimereports_region_sales>
+
+    <realtimereports_bestsellers_sales>
+        <update handle="report_sales"/>
+        <reference name="content">
+            <block type="realtimereports/bestsellers" template="report/grid/container.phtml" name="sales.report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="realtimereports/bestsellers_form" name="grid.filter.form">
+                </block>
+            </block>
+        </reference>
+    </realtimereports_bestsellers_sales>
+
+    <realtimereports_customers_sales>
+        <update handle="report_sales"/>
+        <reference name="content">
+            <block type="realtimereports/customers" template="report/grid/container.phtml" name="sales.report.grid.container">
+                <block type="adminhtml/store_switcher" template="report/store/switcher/enhanced.phtml" name="store.switcher">
+                    <action method="setStoreVarName"><var_name>store_ids</var_name></action>
+                </block>
+                <block type="realtimereports/customers_form" name="grid.filter.form">
+                </block>
+            </block>
+        </reference>
+    </realtimereports_customers_sales>
+
+</layout>

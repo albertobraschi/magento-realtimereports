@@ -1,0 +1,8 @@
+<config>
+	<modules>
+		<Cammino_Realtimereports>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Cammino_Realtimereports>
+	</modules>
+</config>
