@@ -46,10 +46,10 @@ class Cammino_Realtimereports_Model_Mysql4_City_Collection extends Mage_Sales_Mo
     protected function _applyDateRangeFilter()
     {
         if (!is_null($this->_from)) {
-            $this->getSelect()->where('created_at >= ?', $this->_from);
+            $this->getSelect()->where(' date(created_at) >= ?', $this->_from);
         }
         if (!is_null($this->_to)) {
-            $this->getSelect()->where('created_at <= ?', $this->_to);
+            $this->getSelect()->where(' date(created_at) <= ?', $this->_to);
         }
         return $this;
     }

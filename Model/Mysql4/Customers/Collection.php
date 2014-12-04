@@ -46,10 +46,10 @@ class Cammino_Realtimereports_Model_Mysql4_Customers_Collection extends Mage_Sal
     protected function _applyDateRangeFilter()
     {
         if (!is_null($this->_from)) {
-            $this->getSelect()->where('sales_flat_order.created_at >= ?', $this->_from);
+            $this->getSelect()->where(' date(sales_flat_order.created_at) >= ?', $this->_from);
         }
         if (!is_null($this->_to)) {
-            $this->getSelect()->where('sales_flat_order.created_at <= ?', $this->_to);
+            $this->getSelect()->where(' date(sales_flat_order.created_at) <= ?', $this->_to);
         }
         return $this;
     }
