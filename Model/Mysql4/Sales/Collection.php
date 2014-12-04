@@ -14,12 +14,14 @@ class Cammino_Realtimereports_Model_Mysql4_Sales_Collection extends Mage_Sales_M
 
     protected function _initSelect()
     {
+        $tz = Mage::app()->getLocale()->storeDate($store)->toString(Zend_Date::GMT_DIFF_SEP);
+
         if ('month' == $this->_period) {
-            $this->_periodFormat = 'DATE_FORMAT(created_at, \'%Y-%m\')';
+            $this->_periodFormat = 'DATE_FORMAT(CONVERT_TZ(created_at, \'+00:00\', \''.$tz.'\'), \'%Y-%m\')';
         } elseif ('year' == $this->_period) {
-            $this->_periodFormat = 'EXTRACT(YEAR FROM created_at)';
+            $this->_periodFormat = 'EXTRACT(YEAR FROM CONVERT_TZ(created_at, \'+00:00\', \''.$tz.'\'))';
         } else {
-            $this->_periodFormat = 'DATE(created_at)';
+            $this->_periodFormat = 'DATE(CONVERT_TZ(created_at, \'+00:00\', \''.$tz.'\'))';
         }
 
         if (!$this->isTotals()) {
