@@ -43,11 +43,13 @@ class Cammino_Realtimereports_Model_Mysql4_Bestsellers_Collection extends Mage_S
 
     protected function _applyDateRangeFilter()
     {
+        $tz = Mage::app()->getLocale()->storeDate($store)->toString(Zend_Date::GMT_DIFF_SEP);
+        
         if (!is_null($this->_from)) {
-            $this->getSelect()->where(' date(sales_flat_order.created_at) >= ?', $this->_from);
+            $this->getSelect()->where(' DATE(CONVERT_TZ(sales_flat_order.created_at, \'+00:00\', \''.$tz.'\')) >= ?', $this->_from);
         }
         if (!is_null($this->_to)) {
-            $this->getSelect()->where(' date(sales_flat_order.created_at) <= ?', $this->_to);
+            $this->getSelect()->where(' DATE(CONVERT_TZ(sales_flat_order.created_at, \'+00:00\', \''.$tz.'\')) <= ?', $this->_to);
         }
         return $this;
     }

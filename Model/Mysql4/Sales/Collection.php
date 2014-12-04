@@ -40,20 +40,20 @@ class Cammino_Realtimereports_Model_Mysql4_Sales_Collection extends Mage_Sales_M
             $this->getSelect();
 
         }
-        
-        // $this->printLogQuery(true,true);
-
         return $this;
     }
 
     protected function _applyDateRangeFilter()
     {
+        $tz = Mage::app()->getLocale()->storeDate($store)->toString(Zend_Date::GMT_DIFF_SEP);
+
         if (!is_null($this->_from)) {
-            $this->getSelect()->where(' date(created_at) >= ?', $this->_from);
+            $this->getSelect()->where(' DATE(CONVERT_TZ(created_at, \'+00:00\', \''.$tz.'\')) >= ?', $this->_from);
         }
         if (!is_null($this->_to)) {
-            $this->getSelect()->where(' date(created_at) <= ?', $this->_to);
+            $this->getSelect()->where(' DATE(CONVERT_TZ(created_at, \'+00:00\', \''.$tz.'\')) <= ?', $this->_to);
         }
+
         return $this;
     }
 
