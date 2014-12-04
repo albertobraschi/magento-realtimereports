@@ -16,16 +16,22 @@ class Cammino_Realtimereports_Block_Sales_Form extends Mage_Sales_Block_Adminhtm
 
         $fieldset->addField('order_statuses', 'multiselect', array(
             'name' => 'order_statuses',
-            'values' => array(
-                array("label" => "Aprovados", "value" => "processing"),
-                array("label" => "Cancelados", "value" => "canceled"),
-                array("label" => "Pendentes", "value" => "pending"),
-                array("label" => "Em Espera", "value" => "holded")
-            ),
+            'values' => $this->getStatuses(),
             'display' => 'none'
         ), 'show_order_statuses');
 
         return $this;
             
+    }
+
+    private function getStatuses() {
+        $statuses = Mage::getModel('sales/order_status')->getResourceCollection()->getData();
+        $values = array();
+
+        foreach ($statuses as $item) {
+            $values[] = array("label" => $item["label"], "value" => $item["status"]);
+        }
+
+        return $values;
     }
 }
